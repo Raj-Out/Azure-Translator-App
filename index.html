@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azure Translator</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="toolbar" aria-label="Translator settings">
+      <div>
+        <p class="eyebrow">Azure Translator</p>
+        <h1>Translate text across languages</h1>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+        <span class="theme-toggle__track">
+          <span class="theme-toggle__thumb" aria-hidden="true"></span>
+        </span>
+        <span id="themeLabel">Dark mode</span>
+      </button>
+    </section>
+
+    <section class="workspace" aria-label="Translator workspace">
+      <aside class="settings-panel">
+        <img
+          class="settings-panel__image"
+          src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=900&q=80"
+          alt="A laptop showing language and code work"
+        >
+
+        <div class="field-group">
+          <label for="subscriptionKey">Azure key</label>
+          <input id="subscriptionKey" type="password" autocomplete="off" placeholder="Paste your Translator key">
+        </div>
+
+        <div class="field-group">
+          <label for="region">Location / region</label>
+          <input id="region" type="text" autocomplete="off" placeholder="Example: eastus">
+          <p class="help-text">Use the region from your Azure resource, such as <strong>eastus</strong> or <strong>centralindia</strong>. Leave it blank only for a global Translator resource.</p>
+        </div>
+
+        <div class="field-group">
+          <label for="endpoint">Endpoint</label>
+          <input id="endpoint" type="url" value="https://api.cognitive.microsofttranslator.com" autocomplete="off">
+        </div>
+
+        <button class="secondary-button" id="saveSettings" type="button">Save settings</button>
+      </aside>
+
+      <section class="translator-panel" aria-label="Text translator">
+        <div class="language-bar">
+          <div class="field-group compact">
+            <label for="fromLanguage">From</label>
+            <select id="fromLanguage">
+              <option value="">Detect language</option>
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="te">Telugu</option>
+              <option value="ta">Tamil</option>
+              <option value="kn">Kannada</option>
+              <option value="ml">Malayalam</option>
+              <option value="mr">Marathi</option>
+              <option value="gu">Gujarati</option>
+              <option value="bn">Bengali</option>
+              <option value="ur">Urdu</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+              <option value="de">German</option>
+              <option value="ja">Japanese</option>
+              <option value="ko">Korean</option>
+              <option value="zh-Hans">Chinese Simplified</option>
+              <option value="ar">Arabic</option>
+            </select>
+          </div>
+
+          <button class="swap-button" id="swapLanguages" type="button" aria-label="Swap languages">⇄</button>
+
+          <div class="field-group compact">
+            <label for="toLanguage">To</label>
+            <select id="toLanguage">
+              <option value="hi">Hindi</option>
+              <option value="en">English</option>
+              <option value="te">Telugu</option>
+              <option value="ta">Tamil</option>
+              <option value="kn">Kannada</option>
+              <option value="ml">Malayalam</option>
+              <option value="mr">Marathi</option>
+              <option value="gu">Gujarati</option>
+              <option value="bn">Bengali</option>
+              <option value="ur">Urdu</option>
+              <option value="fr">French</option>
+              <option value="es">Spanish</option>
+              <option value="de">German</option>
+              <option value="ja">Japanese</option>
+              <option value="ko">Korean</option>
+              <option value="zh-Hans">Chinese Simplified</option>
+              <option value="ar">Arabic</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-grid">
+          <div class="text-box">
+            <div class="text-box__header">
+              <label for="sourceText">Input text</label>
+              <span id="charCount">0 / 5000</span>
+            </div>
+            <textarea id="sourceText" maxlength="5000" placeholder="Type or paste text here"></textarea>
+          </div>
+
+          <div class="text-box">
+            <div class="text-box__header">
+              <label for="translatedText">Translation</label>
+              <button class="text-action" id="copyTranslation" type="button">Copy</button>
+            </div>
+            <textarea id="translatedText" readonly placeholder="Your translation will appear here"></textarea>
+          </div>
+        </div>
+
+        <div class="actions-row">
+          <p class="status" id="statusMessage" role="status" aria-live="polite">Ready when you are.</p>
+          <button class="primary-button" id="translateButton" type="button">Translate</button>
+        </div>
+
+        <div class="auth-help" id="authHelp" hidden>
+          <strong>Authorization checklist</strong>
+          <ul>
+            <li>Copy Key 1 or Key 2 from the resource's Keys and Endpoint page.</li>
+            <li>Use the exact resource location, for example <strong>eastasia</strong>.</li>
+            <li>Keep the endpoint as <strong>https://api.cognitive.microsofttranslator.com</strong>.</li>
+            <li>Check that the resource is active, quota is available, and public network access is allowed.</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

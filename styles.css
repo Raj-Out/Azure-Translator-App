@@ -1,0 +1,363 @@
+:root {
+  color-scheme: light;
+  --bg: #f7faf8;
+  --surface: #ffffff;
+  --surface-strong: #edf7ef;
+  --text: #17201b;
+  --muted: #65756d;
+  --line: #d7e3dc;
+  --primary: #087f5b;
+  --primary-strong: #046c4e;
+  --accent: #e85d47;
+  --accent-soft: #fff0ed;
+  --shadow: 0 18px 50px rgba(32, 54, 43, 0.12);
+}
+
+body.dark {
+  color-scheme: dark;
+  --bg: #121713;
+  --surface: #1b231e;
+  --surface-strong: #22342a;
+  --text: #eff7f1;
+  --muted: #aab9b0;
+  --line: #34483c;
+  --primary: #43c492;
+  --primary-strong: #64d6a8;
+  --accent: #ff806b;
+  --accent-soft: #39241f;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(135deg, rgba(8, 127, 91, 0.08), transparent 35%),
+    linear-gradient(315deg, rgba(232, 93, 71, 0.09), transparent 38%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.04;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.theme-toggle__track {
+  width: 44px;
+  height: 24px;
+  padding: 3px;
+  border-radius: 8px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.theme-toggle__thumb {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 6px;
+  background: var(--primary);
+  transition: transform 180ms ease;
+}
+
+body.dark .theme-toggle__thumb {
+  transform: translateX(18px);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.settings-panel,
+.translator-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: var(--shadow);
+}
+
+.settings-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px;
+}
+
+.settings-panel__image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.translator-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px;
+}
+
+.field-group {
+  display: grid;
+  gap: 8px;
+}
+
+.field-group label,
+.text-box__header label {
+  font-weight: 800;
+}
+
+.field-group.compact {
+  min-width: 0;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input,
+select {
+  min-height: 46px;
+  padding: 0 12px;
+}
+
+textarea {
+  min-height: 330px;
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.55;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.help-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.language-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: end;
+}
+
+.swap-button,
+.primary-button,
+.secondary-button,
+.text-action {
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.swap-button {
+  width: 46px;
+  height: 46px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+
+.text-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.text-box {
+  min-width: 0;
+}
+
+.text-box__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 34px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.text-action {
+  padding: 7px 12px;
+  background: var(--surface-strong);
+  color: var(--primary);
+}
+
+.actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.status {
+  min-height: 24px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.status[data-type="error"],
+.status[data-type="auth"] {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.auth-help {
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.auth-help strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.auth-help ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 48px;
+  padding: 0 18px;
+}
+
+.primary-button {
+  min-width: 150px;
+  background: var(--primary);
+  color: #ffffff;
+}
+
+body.dark .primary-button {
+  color: #102017;
+}
+
+.secondary-button {
+  width: 100%;
+  background: var(--text);
+  color: var(--surface);
+}
+
+button:hover {
+  filter: brightness(0.97);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+@media (max-width: 820px) {
+  .toolbar,
+  .actions-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .workspace,
+  .text-grid,
+  .language-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .swap-button {
+    width: 100%;
+  }
+
+  textarea {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 18px 0;
+  }
+
+  .settings-panel,
+  .translator-panel {
+    padding: 14px;
+  }
+
+  .theme-toggle {
+    justify-content: space-between;
+  }
+}
